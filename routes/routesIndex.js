@@ -12,7 +12,7 @@ router.get('/', function(req, res) {
     ];
 
   res.render('home', {
-    title: 'ASTROSERVICE Simple Restful with Node JS',
+    title: 'Coffeeshop service restful API',
     apis: apis
   });
 });

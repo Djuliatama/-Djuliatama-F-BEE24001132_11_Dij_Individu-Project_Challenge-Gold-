@@ -7,8 +7,8 @@ router.route('/')
     // GET ALL USER DATA
     .get(userController.getUsers)
 
-    // // INSERT USER DATA
-    // .post(userController.addUser)
+    // INSERT USER DATA
+    .post(userController.addUser)
 
 router.route('/:id')
 
