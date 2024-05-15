@@ -1,4 +1,4 @@
-const LoginService = require("../Login/loginService");
+const LoginService = require("../login/loginService");
 
 const Service = new LoginService();
 

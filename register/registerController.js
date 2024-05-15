@@ -15,5 +15,4 @@ const addUser = async (req, res) => {
     }
 };
 
-
-module.exports = registerController;
+module.exports = {addUser};

@@ -4,7 +4,7 @@ const db = require('../db');
 class UserService {
    
   async getUsers() {
-    const result= await db.query('SELECT * FROM users');
+   const result= await db.query('SELECT * FROM public.user');
    return result.rows;
   }
   
