@@ -26,7 +26,7 @@ app.use('/', routes);
 // app.use('/register', register);
 app.use('/login', login);
 app.use('/api/users', users);
-app.use('./api/items',items);
+app.use('/api/items',items);
 
 // Start server
 app.listen(PORT, () => {
