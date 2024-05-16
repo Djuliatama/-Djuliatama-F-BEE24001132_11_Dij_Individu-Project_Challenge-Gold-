@@ -11,6 +11,18 @@ const getItems = async (req, res) => {
     }
 };
 
+const addItem = async (req, res) => {
+    const { name, price } = req.body;
+
+    try {
+        res.status(201).json (await Service.addItem ({name, price}));
+    }
+    catch (err) {
+        console.error(err);
+        return res.status(500).send('Internal Server Error');
+    }
+};
+
 const deleteItem = async (req, res) => {
     const { id } = req.params;
     try {
@@ -53,6 +65,7 @@ const searchItem = async (req, res) => {
 
 
 module.exports = {
+    addItem,
     getItems,
     deleteItem,
     searchItem,

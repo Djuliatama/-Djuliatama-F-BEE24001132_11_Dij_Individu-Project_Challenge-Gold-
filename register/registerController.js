@@ -2,6 +2,14 @@ const userService = require("../user/userService");
 
 const Service = new userService();
 
+const showRegister = (req, res) => {
+    try { 
+        res.render('register');
+    } catch (error) {
+        console.error('Error rendering register page:', error);
+        res.status(500).send('Internal Server Error');
+    }
+};
 
 const addUser = async (req, res) => {
     const { name, email, username, password } = req.body;
@@ -15,4 +23,7 @@ const addUser = async (req, res) => {
     }
 };
 
-module.exports = {addUser};
+module.exports = {
+    showRegister,
+    addUser,
+};

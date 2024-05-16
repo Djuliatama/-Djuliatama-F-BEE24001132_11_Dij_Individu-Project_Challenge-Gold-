@@ -17,16 +17,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Routes sbg middleware
 const routes = require('./routes/routesIndex');
-// const register = require('./routes/routesRegister')
+const register = require('./routes/routesRegister')
 const login = require('./routes/routesLogin');
 const users = require('./routes/routesUser');
 const items = require('./routes/routesItems');
+const orders = require('./routes/routesOrders');
 
 app.use('/', routes);
-// app.use('/register', register);
+app.use('/register', register);
 app.use('/login', login);
 app.use('/api/users', users);
-app.use('/api/items',items);
+app.use('/api/items', items);
+app.use('/api/orders', orders);
 
 // Start server
 app.listen(PORT, () => {
