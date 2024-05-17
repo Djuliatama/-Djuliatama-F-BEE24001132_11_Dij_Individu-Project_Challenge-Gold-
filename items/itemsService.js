@@ -1,12 +1,28 @@
 const Items = require("./items");
 const db = require('../db');
+// const items = require("./items");
+
+// const { models } = require('../sequelize/models/items.model')
+
+// const { models } = require('../sequelize');
 
 class ItemsService {
+  
+      async getItems() {
+        const items = await models.items.findAll();
+           return items
+      };
 
-    async getItems() {
-        const result= await db.query('SELECT * FROM public.items');
-        return result.rows;
-       }
+
+    // async getItems() {
+    //     const result= await db.query('SELECT * FROM public.items');
+    //     return result.rows;
+    //    }
+
+      //  async function getAll(req, res) {
+      //   const instruments = await models.instrument.findAll();
+      //   res.status(200).json(instruments);
+      // };
 
     async addItem ({name, price}) {
         const result = await db.query('INSERT INTO items (item_id, item_name, item_price, item_description, created_at, updated_at) VALUES (DEFAULT, $1, $2, $3, $4 CURRENT_TIMESTAMP, CURRENT_TIMESTAMP) RETURNING *',  [name, price])
