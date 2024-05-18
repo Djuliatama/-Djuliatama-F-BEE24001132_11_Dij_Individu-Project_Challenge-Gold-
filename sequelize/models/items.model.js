@@ -12,6 +12,22 @@ module.exports = (sequelize) => {
 			allowNull: false,
 			type: DataTypes.STRING,
 		},
+        price: {
+			allowNull: false,
+			type: DataTypes.NUMBER
+		},
+        description: {
+			allowNull: false,
+			type: DataTypes.TEXT
+		},
+        created: {
+			allowNull: true,
+			type: DataTypes.TIME
+		},
+        updated: {
+			allowNull: true,
+			type: DataTypes.TIME
+		},
         // price: {
 		// 	allowNull: false,
 		// 	type: DataTypes.STRING,
@@ -19,10 +35,7 @@ module.exports = (sequelize) => {
 		// 		isIn: [['string', 'wind', 'percussion']]
 		// 	}
 		// },
-		price: {
-			allowNull: false,
-			type: DataTypes.NUMBER
-		},
+		
 		// We also want it to have a 'orchestraId' field, but we don't have to define it here.
 		// It will be defined automatically when Sequelize applies the associations.
 	});
