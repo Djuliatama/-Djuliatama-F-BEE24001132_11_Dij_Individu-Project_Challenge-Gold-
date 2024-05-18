@@ -51,10 +51,10 @@ const editItemById = async (req, res) => {
     }
 };
 
-const searchItem = async (req, res) => {
+const searchItemByKeyword = async (req, res) => {
     const { keyword } = req.query.keyword;
     try {
-        const items = await Service.searchItem(keyword);
+        const items = await Service.searchItemByKeyword(keyword);
         res.status(200).json(items);
     } catch (err) {
         console.error(err);
@@ -68,6 +68,6 @@ module.exports = {
     addItem,
     getItems,
     deleteItem,
-    searchItem,
+    searchItemByKeyword,
     editItemById,
 };

@@ -1,33 +1,44 @@
-const User = require("./user");
+const User = require("../models/user");
 const db = require('../db');
 
 class UserService {
    
   async getUsers() {
-   const result= await db.query('SELECT * FROM public.user');
-   return result.rows;
+  //  const result= await db.query('SELECT * FROM public.user');
+  //  return result.rows;
+   const result = await User.findAll();
+   return result;
   }
   
   async getUserById(id) {
-    const result = await db.query('SELECT * FROM users WHERE user_id =$1', [id])
-    return result.rows;
+    // const result = await db.query('SELECT * FROM users WHERE user_id =$1', [id])
+    // return result.rows;
+    const result = await models.users.findByPk(id)
+    return result;
     // return user ??
   }
 
   async addUser ({name, email, username, password}) {
-    const result = await db.query('INSERT INTO users (user_id, user_email, user_username, user_password, created_at, updated_at) VALUES (DEFAULT, $1, $2, $3, $4 CURRENT_TIMESTAMP, CURRENT_TIMESTAMP) RETURNING *',  [name, email, username, password])
-    return result.rows;
+    // const result = await db.query('INSERT INTO users (user_id, user_email, user_username, user_password, created_at, updated_at) VALUES (DEFAULT, $1, $2, $3, $4 CURRENT_TIMESTAMP, CURRENT_TIMESTAMP) RETURNING *',  [name, email, username, password])
+    // return result.rows;
+    await models.users.create(body)
   }
+
 
   async deletedUserById(id) {
-    const result = await db.query ('DELETE FROM users WHERE user_id = $1', [id])
-    // return result.rows ??
-}
-
-  async editUserById(id, {name, email, username, password}) {
-    const result = await db.query ('UPDATE users SET user_name = $1, user_email = $2, user_username = $3, user_password = $4 WHERE user_id = $5', [name, email, username, password, id])
+  // const result = await db.query ('DELETE FROM users WHERE user_id = $1', [id])
+  await models.users.destroy({
+    where: {user_id:id}
+  })
+  // return result.rows
   }
-  
+
+  async editUserById(id, body) {
+    // const result = await db.query ('UPDATE users SET user_name = $1, user_email = $2, user_password = $3 WHERE user_id = $4', [name, email, password, id])
+    await models.users.update(body, {
+      where: {user_id: id}
+    });
+}
   }  
 
 //      async getUsers() {

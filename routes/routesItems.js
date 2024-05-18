@@ -21,7 +21,7 @@ router.route('/:id')
 router.route('/search')
 
 // SEARCH ITEM
-.get(itemsController.searchItem)
+.get(itemsController.searchItemByKeyword)
 
 
 module.exports = router;

@@ -1,9 +1,9 @@
-const { Sequelize } = require('sequelize');
+// const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize('buatchallenge', 'postgres', 'Takoyaki99', {
-  host: 'localhost',
-  dialect: 'postgres',
-});
+// const sequelize = new Sequelize('buatchallenge', 'postgres', 'Takoyaki99', {
+//   host: 'localhost',
+//   dialect: 'postgres',
+// });
 
 //models filenya 
 const modelDefiners = [

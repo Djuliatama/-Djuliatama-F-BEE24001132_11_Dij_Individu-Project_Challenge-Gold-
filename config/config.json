@@ -1,10 +1,11 @@
 {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "database_development",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "postgres",
+    "password": "Takoyaki99",
+    "database": "Coffeeshopdije",
+    "host": "localhost",
+    "port": "5433",
+    "dialect": "postgres"
   },
   "test": {
     "username": "root",
