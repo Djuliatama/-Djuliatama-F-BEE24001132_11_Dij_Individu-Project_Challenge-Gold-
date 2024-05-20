@@ -1,9 +1,25 @@
-const User = require("../models/user");
-const db = require('../db');
+const models = require('../models');
+const User = models.user;
+// const db = require('../db');
+// const { sequelize } = require("../models");
+// const { Model } = require('sequelize');
 
 class UserService {
    
   async getUsers() {
+    // const orders = await Orders.findAll({
+    //     where: {
+    //         user_id: userId
+    //     },
+    //     include: [{
+    //         model: User,
+    //         as: 'user',
+    //         attributes: ['id', 'username', 'email', 'full_name']
+    //     }, {
+    //         model: PaymentMethods, as: 'payment_method'
+    //     }]
+    // })
+
   //  const result= await db.query('SELECT * FROM public.user');
   //  return result.rows;
    const result = await User.findAll();
@@ -15,7 +31,6 @@ class UserService {
     // return result.rows;
     const result = await models.users.findByPk(id)
     return result;
-    // return user ??
   }
 
   async addUser ({name, email, username, password}) {

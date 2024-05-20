@@ -9,6 +9,7 @@ const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
 
+
 let sequelize;
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
@@ -26,10 +27,11 @@ fs
       file.indexOf('.test.js') === -1
     );
   })
-  .forEach(file => {
-    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
+
+  .forEach((file) => {
+    const model = require(path.join(__dirname, file));
     db[model.name] = model;
-  });
+});
 
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
@@ -41,3 +43,30 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 module.exports = db;
+
+
+// const { Sequelize } = require('sequelize');
+// const { applyExtraSetup } = require('./extra-setup');
+
+// const modelDefiners = [
+// 	require('./models/user.model'),
+// 	require('./models/orders.model'),
+// 	require('./models/items.model'),
+// ];
+
+// for (const modelDefiner of modelDefiners) {
+// 	modelDefiner(sequelize);
+// }
+
+// //kode test koneksi database
+// (async () => {
+//   try {
+//     await sequelize.authenticate();
+//     console.log('Connection has been established successfully.');
+//   } catch (error) {
+//     console.error('Unable to connect to the database:', error);
+//   }
+// })();
+
+// applyExtraSetup(sequelize);
+// module.exports = sequelize;

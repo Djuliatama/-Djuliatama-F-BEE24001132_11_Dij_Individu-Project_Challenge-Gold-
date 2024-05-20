@@ -10,7 +10,10 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      User.hasMany(models.Orders, {
+        foreignKey: 'user_id',
+        as: 'orders'
+      });
     }
   }
   User.init({
@@ -34,3 +37,4 @@ module.exports = (sequelize, DataTypes) => {
 // npx sequelize-cli model:generate --name User --attributes firstName:string,lastName:string,email:string
 
 // npx sequelize-cli model:generate --name Orders --attributes user_id:integer,item_id:integer,item_quality:integer,order_status:string
+
